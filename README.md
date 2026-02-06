@@ -2,7 +2,7 @@
 
 ⚠️ **This is an actively maintained fork with critical bug fixes.**
 
-The original [turnono/7pace-mcp-server](https://github.com/turnono/7pace-mcp-server) appears inactive. I've submitted a [Pull Request #XX](LINK-TO-YOUR-PR) with these fixes and am maintaining this fork in the meantime.
+The original [turnono/7pace-mcp-server](https://github.com/turnono/7pace-mcp-server) appears inactive. I've submitted a [Pull Request #9](https://github.com/turnono/7pace-mcp-server/pull/9) with these fixes and am maintaining this fork in the meantime.
 
 ## Critical Fixes in This Fork
 
