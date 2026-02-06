@@ -1,3 +1,33 @@
+# 7pace MCP Server (Active Fork)
+
+⚠️ **This is an actively maintained fork with critical bug fixes.**
+
+The original [turnono/7pace-mcp-server](https://github.com/turnono/7pace-mcp-server) appears inactive. I've submitted a [Pull Request #XX](LINK-TO-YOUR-PR) with these fixes and am maintaining this fork in the meantime.
+
+## Critical Fixes in This Fork
+
+✅ **Date filtering** - Prevents context explosion (298 entries → correct count)  
+✅ **Hours conversion** - Correct durations (was sending raw hours, now sends seconds)  
+✅ **Date parameter** - Log to any past/future date (entries no longer default to today)  
+✅ **Update functionality** - Worklogs now update correctly (PATCH instead of PUT)
+
+## Installation
+
+Use this fork in your Claude Desktop config:
+
+```json
+{
+  "mcpServers": {
+    "7pace-timetracker": {
+      "command": "npx",
+      "args": ["-y", "github:Genetec420/7pace-mcp-server"]
+    }
+  }
+}
+```
+
+---
+
 <div align="center">
 
 # 🚀 7pace Timetracker MCP Server
