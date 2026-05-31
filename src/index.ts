@@ -185,9 +185,9 @@ class SevenPaceService {
       workItemId: entry.workItemId,
       timestamp: entry.startTime || `${entry.date}T00:00:00`,
       length: (() => {
-        const minutes = Math.round(entry.hours * 60);
-        console.error(`DEBUG: Converting ${entry.hours} hours to ${minutes} minutes`);
-        return minutes;
+        const seconds = Math.round(entry.hours * 3600);
+        console.error(`DEBUG: Converting ${entry.hours} hours to ${seconds} seconds`);
+        return seconds;
       })(),
       comment: entry.description,
       ...(activityTypeId ? { activityTypeId } : {}),
@@ -372,9 +372,9 @@ class SevenPaceService {
         workItemId: updates.workItemId || existing.workItemId,
         length: typeof updates.hours === "number"
           ? (() => {
-              const minutes = Math.round(updates.hours * 60);
-              console.error(`DEBUG updateWorklog: Converting ${updates.hours} hours to ${minutes} minutes`);
-              return minutes;
+              const seconds = Math.round(updates.hours * 3600);
+              console.error(`DEBUG updateWorklog: Converting ${updates.hours} hours to ${seconds} seconds`);
+              return seconds;
             })()
           : existing.length,
         activityTypeId: activityTypeId,
