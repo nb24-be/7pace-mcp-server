@@ -71,9 +71,8 @@ function isGuidLike(value: string | undefined | null): boolean {
 }
 
 function computeHoursFromApiLength(length: number): number {
-  // Heuristic: REST list often returns seconds; create/update uses minutes.
-  // If the number is large (>= 1000), assume seconds; else minutes.
-  return length >= 1000 ? length / 3600 : length / 60;
+  // GET endpoints return seconds; divide by 3600 to get hours.
+  return length / 3600;
 }
 
 class SevenPaceService {
@@ -186,9 +185,9 @@ class SevenPaceService {
       workItemId: entry.workItemId,
       timestamp: entry.startTime || `${entry.date}T00:00:00`,
       length: (() => {
-        const seconds = Math.round(entry.hours * 3600);
-        console.error(`DEBUG: Converting ${entry.hours} hours to ${seconds} seconds`);
-        return seconds;
+        const minutes = Math.round(entry.hours * 60);
+        console.error(`DEBUG: Converting ${entry.hours} hours to ${minutes} minutes`);
+        return minutes;
       })(),
       comment: entry.description,
       ...(activityTypeId ? { activityTypeId } : {}),
@@ -373,9 +372,9 @@ class SevenPaceService {
         workItemId: updates.workItemId || existing.workItemId,
         length: typeof updates.hours === "number"
           ? (() => {
-              const seconds = Math.round(updates.hours * 3600);
-              console.error(`DEBUG updateWorklog: Converting ${updates.hours} hours to ${seconds} seconds`);
-              return seconds;
+              const minutes = Math.round(updates.hours * 60);
+              console.error(`DEBUG updateWorklog: Converting ${updates.hours} hours to ${minutes} minutes`);
+              return minutes;
             })()
           : existing.length,
         activityTypeId: activityTypeId,
